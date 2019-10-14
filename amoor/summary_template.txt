@@ -1,0 +1,17 @@
+﻿Største strømhastighet på 5 m er {strom5:1.2f} m/s og kommer fra {strom5_id}. Største strømhastighet på 15 m er {strom15:1.2f} m/s og kommer fra {strom15_id}. Største vindhastighet er {vind:2.0f} m/s og kommer fra {vind_id}. Største bølge er {hs:2.2f} m og kommer fra {hs_id}.
+
+Største laster i tau ved likevekt er {load_lv_tau_intakt:2.1f} tonn i {load_lv_tau_intakt_id}, {load_lv_ramme_intakt:2.1f} tonn i rammeline {load_lv_ramme_intakt_id} og {load_lv_hane_intakt:2.1f} tonn i hanefot i bur {load_lv_hane_intakt_id}.
+
+Største aksiale og vertikale laster er {load_ml_hane_intakt:2.1f} tonn og {max_zload_ml_hane_intakt:2.1f} tonn i haneføtter, henholdsvis, ved intakt tilstand.
+Tilsvarende laster ved ulykke er {load_ml_hane_ulykke:2.1f} tonn og {max_zload_ml_hane_ulykke:2.1f} tonn.
+
+Største MBL-krav til koblingspunkter er {mbl_coupling_final_ramme_tau:2.1f} tonn, og oppstår i festepunkter til line {mbl_coupling_final_ramme_tau_id}.
+
+Største MBL-krav til bunnfeste er {mbl_anchor_final_tau:2.1f} tonn, og kommer fra fortøyningsline {mbl_anchor_final_tau_id}.
+Det oppstår en vertikal last på 4.0 tonn eller mer i bunnfeste {min_zload_ml_bunnkj_id}.
+
+Største MBL-krav er {mbl_bound_final_tau:2.1f} tonn i fortøyningsline {mbl_bound_final_tau_id}, {mbl_bound_final_ramme:2.1f} tonn i rammeline {mbl_bound_final_ramme_id} og {mbl_bound_final_hane:2.1f} tonn i hanefot i bur {mbl_bound_final_hane_id}.
+
+Mest utnyttede materiale er i {utilization_id}, med {utilization:2.1f} % utnyttelse.
+
+_ til line _ vurderes som mest utsatt for utmatting. Estimert levetid før utmattelse her er _ år.
