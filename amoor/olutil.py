@@ -18,7 +18,6 @@ def _format_degree_minutes(latitude, longitude):
     return '{:02d}\N{degree sign}{:06.3f} N - {:02d}\N{degree sign}{:06.3f} Ø'\
         .format(h_lat, min_lat, h_long, min_long)
 
-
 def _read_olex_object_export(path):
     '''Reads olex file from given path
     and returns a dictionary with the data.'''
@@ -35,13 +34,11 @@ def _read_olex_object_export(path):
         is_block = False
         for line in file:
             nice_line = line.decode("cp1252")
+            # Stop reading
             if "\n" == nice_line and is_block:
                 is_block = False
                 block_id += 1
-
-            if is_block:
                 data_list = nice_line.split()
-
                 if data_list[0] == "Navn":
                     # Overwrite None with given_name if it exists
                     data["given_name"][-1] = data_list[1]
@@ -57,7 +54,7 @@ def _read_olex_object_export(path):
                     data["formatted"].append(
                         _format_degree_minutes(latitude, longitude)
                     )
-
+            # Start reading
             if "Plottsett" in nice_line:
                 is_block = True
     return data
