@@ -34,11 +34,16 @@ def _read_olex_object_export(path):
         is_block = False
         for line in file:
             nice_line = line.decode("cp1252")
-            # Stop reading
+
+            # Stop reading block
             if "\n" == nice_line and is_block:
                 is_block = False
                 block_id += 1
+            
+            # Do block business
+            if is_block:
                 data_list = nice_line.split()
+
                 if data_list[0] == "Navn":
                     # Overwrite None with given_name if it exists
                     data["given_name"][-1] = data_list[1]
@@ -54,7 +59,7 @@ def _read_olex_object_export(path):
                     data["formatted"].append(
                         _format_degree_minutes(latitude, longitude)
                     )
-            # Start reading
+            # Start reading block
             if "Plottsett" in nice_line:
                 is_block = True
     return data
