@@ -68,7 +68,7 @@ def _read_olex_object_export(path):
 def _make_olex_df(data, only_named=False):
     '''Reads data dictionary and makes DataFrame.
     If only_named is True, then only the named coordinates are returned.'''
-    olex_df = pd.DataFrame(data)
+    olex_df = _remove_single_points(pd.DataFrame(data))
     if only_named:
         name_filter = pd.notna(olex_df.given_name)
         return olex_df.loc[name_filter]
@@ -76,7 +76,7 @@ def _make_olex_df(data, only_named=False):
 
 
 def _remove_single_points(olex_df):
-    '''Remove all single points from olex_olex_df. That is, remove any block
+    '''Remove all single points from olex_df. That is, remove any block
     with only one coordinate. Function assumes that blocks appear in either 
     ascending or descending order.'''
     is_duplicated = []
@@ -93,26 +93,26 @@ def _remove_single_points(olex_df):
     is_duplicated.append(
         olex_df.block[len(olex_df)-1] == olex_df.block[len(olex_df)-2]
     )
-    return is_duplicated
+    return olex_df.loc[is_duplicated]
 
 
-def _get_named_blocks(olex_olex_df):
+def _get_named_blocks(olex_df):
     '''Get all block with named coordinate.'''
-    name_filter = pd.notna(olex_olex_df.given_name)
-    named_blocks = olex_olex_df.loc[name_filter, "block"].unique()
+    name_filter = pd.notna(olex_df.given_name)
+    named_blocks = olex_df.loc[name_filter, "block"].unique()
     return named_blocks
 
 
-def _calculate_geodesic(olex_olex_df):
-    '''Calculate line length and azimuthal angle from olex_olex_df.
+def _calculate_geodesic(olex_df):
+    '''Calculate line length and azimuthal angle from olex_df.
     Return DataFrame with the values and anchor names'''
-    named_blocks = _get_named_blocks(olex_olex_df)
-    olex_block_olex_df = olex_olex_df.set_index('block')
+    named_blocks = _get_named_blocks(olex_df)
+    olex_block_df = olex_df.set_index('block')
     points = []
     lines = {'length': [], 'azimuth': [], 'anchor_name': []}
     
     for block_nr in named_blocks:
-        olex_df_slice = olex_block_olex_df.loc[block_nr]
+        olex_df_slice = olex_block_df.loc[block_nr]
         points.clear()
         anker = None
         ramme = None
@@ -139,25 +139,24 @@ def _calculate_geodesic(olex_olex_df):
 def plot_map(olex_path):
     '''Plot olex map that shows anchor names, all coordinates, line length,
     and bearing. The functions that calculates bearing assumes that each line
-    consists of two points, with anchor point being last. olex_olex_df need only
+    consists of two points, with anchor point being last. olex_df need only
     contain latitude and longitude.'''
     data = _read_olex_object_export(olex_path)
-    olex_olex_df = _make_olex_olex_df(data, only_named=False)
-    print(olex_olex_df.to_string())
+    olex_df = _make_olex_df(data, only_named=False)
     m = fl.Map(
-        location=olex_olex_df.loc[0, ["latitude", "longitude"]].values.tolist(),
+        location=olex_df.loc[0, ["latitude", "longitude"]].values.tolist(),
         zoom_start=15
     )
-    olex_df_blocks = olex_olex_df.set_index("block")
-    max_block = olex_olex_df["block"].max()
-    named_blocks = _get_named_blocks(olex_olex_df)
+    olex_df_blocks = olex_df.set_index("block")
+    block_nrs = olex_df["block"].unique()
+    named_blocks = _get_named_blocks(olex_df)
 
-    for _, row in olex_olex_df.iterrows():
+    for _, row in olex_df.iterrows():
         fl.Marker([row["latitude"], row["longitude"]],
                   tooltip=row["given_name"],
                   popup=row["formatted"]).add_to(m)
 
-    for block_nr in range(1, max_block+1):
+    for block_nr in block_nrs:
         olex_df_slice = olex_df_blocks.loc[block_nr, ["latitude", "longitude"]]
         s12 = 0
         bearing = None
@@ -173,7 +172,7 @@ def plot_map(olex_path):
         if bearing: 
             tooltip += ', {:3.1f}\N{degree sign}'.format(bearing)
 
-        fl.PolyLine(df_slice.values, tooltip=tooltip).add_to(m)
+        fl.PolyLine(olex_df_slice.values, tooltip=tooltip).add_to(m)
     return m
 
 
