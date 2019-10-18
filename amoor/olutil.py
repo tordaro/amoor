@@ -18,6 +18,7 @@ def _format_degree_minutes(latitude, longitude):
     return '{:02d}\N{degree sign}{:06.3f} N - {:02d}\N{degree sign}{:06.3f} Ø'\
         .format(h_lat, min_lat, h_long, min_long)
 
+
 def _read_olex_object_export(path):
     '''Reads olex file from given path
     and returns a dictionary with the data.'''
@@ -26,7 +27,8 @@ def _read_olex_object_export(path):
               "longitude",
               "block",
               "timestamp",
-              "formatted"]
+              "formatted",
+              "symbol"]
     data = {name: [] for name in header}
     block_id = 1
 
@@ -59,6 +61,7 @@ def _read_olex_object_export(path):
                     data["formatted"].append(
                         _format_degree_minutes(latitude, longitude)
                     )
+                    data["symbol"].append(data_list[3])
             # Start reading block
             if "Plottsett" in nice_line:
                 is_block = True
@@ -69,6 +72,7 @@ def _make_olex_df(data, only_named=False):
     '''Reads data dictionary and makes DataFrame.
     If only_named is True, then only the named coordinates are returned.'''
     olex_df = _remove_single_points(pd.DataFrame(data))
+    olex_df = _correct_line_dir(olex_df)
     if only_named:
         name_filter = pd.notna(olex_df.given_name)
         return olex_df.loc[name_filter]
@@ -94,6 +98,25 @@ def _remove_single_points(olex_df):
         olex_df.block[len(olex_df)-1] == olex_df.block[len(olex_df)-2]
     )
     return olex_df.loc[is_duplicated]
+
+
+def _correct_line_dir(olex_df):
+    '''If a block contains two coordinates and "Brunsirkel" appears last,
+    then the coordinates are swapped.'''
+    df_block = olex_df.set_index("block")
+
+    for block_nr in olex_df["block"].unique():
+        block = df_block.loc[block_nr].copy(False)  # Shallow copy 
+        is_pair = len(block) == 2
+        first_is_not_bs = block["symbol"].iloc[0] != "Brunsirkel"
+        last_is_bs = block["symbol"].iloc[1] == "Brunsirkel"
+
+        if is_pair and first_is_not_bs and last_is_bs:
+            block.iloc[0, 1:], block.iloc[1, 1:] = (
+                block.iloc[1, 1:],block.iloc[0, 1:]
+            )
+
+    return df_block.reset_index()
 
 
 def _get_named_blocks(olex_df):
@@ -209,5 +232,5 @@ if __name__ == '__main__':
 	m = plot_map(olex_path)
 	builup = make_buildup_form(olex_path)
 
-	m.save('../Dokumentasjon/'+file_name+'.html')
+	m.save(file_name+'.html')
 	builup.to_excel(file_name+'.xlsx')
