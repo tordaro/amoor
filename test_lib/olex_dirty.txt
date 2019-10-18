@@ -1,0 +1,416 @@
+Ferdig forenklet
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.03268 1399.60896 1571044275 Brunsirkel
+4207.9365 1399.31982 1571044275 Anker
+Navn 101
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.08871352 1399.84138218 1571044275 Brunsirkel
+4208.085 1399.62799998 1571044275 Anker
+Navn F101
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.10799998 1399.68400002 1571044275 Anker
+4208.08871352 1399.84138218 1571044275 Brunsirkel
+Navn F102
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.03268 1399.60896 1571044275 Brunsirkel
+4208.01402 1399.27098 1571044275 Anker
+Navn 102
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.10798 1399.374 1571044275 Anker
+4208.03268 1399.60896 1571044275 Brunsirkel
+Navn 103
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.10024312 1399.87476222 1571044275 Brunsirkel
+4208.16799998 1399.80400002 1571044275 Anker
+Navn F103
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.10024312 1399.87476222 1571044275 Brunsirkel
+4208.18500002 1400.00899998 1571044275 Kryss
+Navn F104
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.05716 1399.68654 1571044275 Brunsirkel
+4208.136 1399.45002 1571044275 Anker
+Navn 104
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.13492 1399.53342 1571044275 Flyvrak
+4208.05716 1399.68654 1571044275 Brunsirkel
+Navn 105
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.08516518 1399.91989758 1571044275 Brunsirkel
+4208.11000002 1400.11099998 1571044275 Kryss
+Navn F105
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.08516518 1399.91989758 1571044275 Brunsirkel
+4208.031 1400.106 1571044275 Anker
+Navn F106
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.08578 1399.77378 1571044275 Brunsirkel
+4208.12202 1399.66098 1571044275 Anker
+Navn 106
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.08578 1399.77378 1571044275 Brunsirkel
+4208.14602 1399.803 1571044275 Anker
+Navn 107
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.07367698 1399.88675502 1571044275 Brunsirkel
+4208.02699998 1400.01100002 1571044275 Anker
+Navn F107
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.07367698 1399.88675502 1571044275 Brunsirkel
+4208.02600002 1399.97599998 1571044275 Anker
+Navn F108
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.08578 1399.77378 1571044275 Brunsirkel
+4208.15800002 1399.875 1571044275 Anker
+Navn 108
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.05824 1399.86252 1571044275 Brunsirkel
+4208.127 1400.247 1571044275 Anker
+Navn 109
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.02866 1399.95408 1571044275 Brunsirkel
+4208.0775 1400.15328 1571044275 Anker
+Navn 110
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.9998 1400.0463 1571044275 Brunsirkel
+4208.05399998 1400.23399998 1571044275 Anker
+Navn 111
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.9998 1400.0463 1571044275 Brunsirkel
+4207.99824 1400.2515 1571044275 Anker
+Navn 112
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.9998 1400.0463 1571044275 Brunsirkel
+4207.92744 1400.2752 1571044275 Anker
+Navn 113
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.97136 1399.9629 1571044275 Brunsirkel
+4207.9014 1400.18184 1571044275 Anker
+Navn 114
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.94388 1399.88532 1571044275 Brunsirkel
+4207.85532 1400.05794 1571044275 Anker
+Navn 115
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.94388 1399.88532 1571044275 Brunsirkel
+4207.84038 1399.86324 1571044275 Anker
+Navn 116
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.94388 1399.88532 1571044275 Brunsirkel
+4207.8498 1399.58856 1571044275 Anker
+Navn 117
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4207.97298 1399.79292 1571044275 Brunsirkel
+4207.87842 1399.49448 1571044275 Anker
+Navn 118
+
+Rute uten navn
+Linjefarge Gul
+Plottsett 1
+4208.00256 1399.70232 1571044275 Brunsirkel
+4207.90164 1399.41216 1571044275 Anker
+Navn 119
+
+Rute uten navn
+Plottsett 1
+4208.03268 1399.60896 1571044275 Garnstart
+Navn 301
+
+Rute uten navn
+Plottsett 1
+4208.08871352 1399.84138218 1571044275 Garnstart
+Navn F301
+
+Rute uten navn
+Plottsett 1
+4208.05716 1399.68654 1571044275 Garnstart
+Navn 302
+
+Rute uten navn
+Plottsett 1
+4208.08578 1399.77378 1571044275 Garnstart
+Navn 303
+
+Rute uten navn
+Plottsett 1
+4208.10024312 1399.87476222 1571044275 Garnstart
+Navn F303
+
+Rute uten navn
+Plottsett 1
+4208.00256 1399.70232 1571044275 Garnstart
+Navn 304
+
+Rute uten navn
+Plottsett 1
+4208.02974 1399.77948 1571044275 Garnstart
+Navn 305
+
+Rute uten navn
+Plottsett 1
+4208.05824 1399.86252 1571044275 Garnstart
+Navn 306
+
+Rute uten navn
+Plottsett 1
+4208.07367698 1399.88675502 1571044275 Garnstart
+Navn F306
+
+Rute uten navn
+Plottsett 1
+4207.97298 1399.79292 1571044275 Garnstart
+Navn 307
+
+Rute uten navn
+Plottsett 1
+4208.00004 1399.87182 1571044275 Garnstart
+Navn 308
+
+Rute uten navn
+Plottsett 1
+4208.08516518 1399.91989758 1571044275 Garnstart
+Navn F308
+
+Rute uten navn
+Plottsett 1
+4208.0908233 1399.8587724 1571044275 Garnstart
+Navn F309
+
+Rute uten navn
+Plottsett 1
+4208.02866 1399.95408 1571044275 Garnstart
+Navn 309
+
+Rute uten navn
+Plottsett 1
+4207.94388 1399.88532 1571044275 Garnstart
+Navn 310
+
+Rute uten navn
+Plottsett 1
+4208.0945673 1399.8700761 1571044275 Garnstart
+Navn F310
+
+Rute uten navn
+Plottsett 1
+4208.07962862 1399.892373 1571044275 Garnstart
+Navn F311
+
+Rute uten navn
+Plottsett 1
+4207.97136 1399.9629 1571044275 Garnstart
+Navn 311
+
+Rute uten navn
+Plottsett 1
+4207.9998 1400.0463 1571044275 Garnstart
+Navn 312
+
+Rute uten navn
+Plottsett 1
+4208.08342488 1399.9038273 1571044275 Garnstart
+Navn F312
+
+Rute uten navn
+Plottsett 1
+4208.03268 1399.60896 1571044275 Brunsirkel
+4208.05716 1399.68654 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.08871352 1399.84138218 1571044275 Brunsirkel
+4208.10024312 1399.87476222 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.05716 1399.68654 1571044275 Brunsirkel
+4208.08578 1399.77378 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.03268 1399.60896 1571044275 Brunsirkel
+4208.00256 1399.70232 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.08871352 1399.84138218 1571044275 Brunsirkel
+4208.07367698 1399.88675502 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.10024312 1399.87476222 1571044275 Brunsirkel
+4208.08516518 1399.91989758 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.05716 1399.68654 1571044275 Brunsirkel
+4208.02974 1399.77948 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.08578 1399.77378 1571044275 Brunsirkel
+4208.05824 1399.86252 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.00256 1399.70232 1571044275 Brunsirkel
+4208.02974 1399.77948 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.02974 1399.77948 1571044275 Brunsirkel
+4208.05824 1399.86252 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.07367698 1399.88675502 1571044275 Brunsirkel
+4208.08516518 1399.91989758 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.00256 1399.70232 1571044275 Brunsirkel
+4207.97298 1399.79292 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.02974 1399.77948 1571044275 Brunsirkel
+4208.00004 1399.87182 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.05824 1399.86252 1571044275 Brunsirkel
+4208.02866 1399.95408 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4207.97298 1399.79292 1571044275 Brunsirkel
+4208.00004 1399.87182 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.00004 1399.87182 1571044275 Brunsirkel
+4208.02866 1399.95408 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4207.97298 1399.79292 1571044275 Brunsirkel
+4207.94388 1399.88532 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.00004 1399.87182 1571044275 Brunsirkel
+4207.97136 1399.9629 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4208.02866 1399.95408 1571044275 Brunsirkel
+4207.9998 1400.0463 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4207.97136 1399.9629 1571044275 Brunsirkel
+4207.94388 1399.88532 1571044275 Brunsirkel
+
+
+Rute uten navn
+Plottsett 1
+4207.9998 1400.0463 1571044275 Brunsirkel
+4207.97136 1399.9629 1571044275 Brunsirkel
+
