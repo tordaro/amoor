@@ -1,9 +1,11 @@
 import sys
 import logging
+from time import perf_counter
 import pandas as pd
 from pathlib import Path
 from amoor import read_avz, read_key, merge, max_summary
 
+tic = perf_counter()
 logging.basicConfig(level=logging.DEBUG,
                     filename='amoor.log',
                     filemode='a',
@@ -156,11 +158,7 @@ for folder in dest_dirs:
                             index=range(1, len(merged_sub_paths)+1))
         df_sources.to_excel(writer, sheet_name='sources')
 
-with open('log.txt', 'a') as file:
-    if log:
-        for line in log:
-            file.write(line + '\n')
-        file.write('\n')
-
 print('Done!')
 logging.info('Program terminated.')
+toc = perf_counter()
+logging.info(f'Execution time: {toc-tic:3.1f} s.')
