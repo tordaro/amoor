@@ -1,8 +1,15 @@
 import sys
+import logging
 import pandas as pd
 from pathlib import Path
 from amoor import read_avz, read_key, merge, max_summary
 
+logging.basicConfig(level=logging.DEBUG,
+                    filename='amoor.log',
+                    filemode='a',
+                    format='%(asctime)s - %(message)s',
+                    datefmt='%d-%b-%y %H:%M:%S')
+logging.info('Program started.')
 
 def path_replace(path, old_name, new_name, suffix=None):
     new_path = Path(str(path).replace(str(old_name), str(new_name)))
@@ -43,7 +50,6 @@ DEST_ROOT = Path('Output')
 MATERIAL_LIB_PATH = Path('amoor/all_materials.csv')
 is_nice = True
 material_lib = pd.read_csv(MATERIAL_LIB_PATH, index_col='Forkortelse')
-log = []
 
 pfat_sources = [path for path in SOURCE_ROOT.glob('**/*PFAT.avz')
                 if 'max_' not in str(path)]
@@ -70,13 +76,13 @@ for pfat_avz in pfat_sources:
     pfat_avz_str = str(pfat_avz)
     if 'ulykke' in pfat_avz_str.lower():
         log_txt = pfat_avz_str + ' parsed as accident.'
-        log.append(log_txt)
+        logging.info(log_txt)
         print(log_txt)
         df = read_avz.avz_to_df(pfat_avz_str, True, is_nice)
         df.to_csv(pfat_csv)
     else:
         log_txt = pfat_avz_str + ' parsed as intact.'
-        log.append(log_txt)
+        logging.info(log_txt)
         print(log_txt)
         df = read_avz.avz_to_df(pfat_avz_str, False, is_nice)
         df.to_csv(pfat_csv)
@@ -88,7 +94,7 @@ for key_txt in key_sources:
         continue
     key_txt_str = str(key_txt)
     log_txt = key_txt_str + ' parsed.'
-    log.append(log_txt)
+    logging.info(log_txt)
     print(log_txt)
     df = read_key.key_to_df(key_txt_str)
     df.to_csv(key_csv)
@@ -101,7 +107,7 @@ for pfat, key in zip(pfat_dest, key_dest):
     pfat_str = str(pfat)
     key_str = str(key)
     log_txt = 'Merging ' + pfat_str + ' and ' + key_str + '...'
-    log.append(log_txt)
+    logging.info(log_txt)
     print(log_txt)
     df = merge.merge(pfat_str, key)
     df.to_csv(merged)
@@ -119,7 +125,7 @@ for folder in dest_dirs:
     if summary_is_updated(max_dest, merged_sub_paths):
         continue
     log_txt = 'Making ' + str(max_dest) + '...'
-    log.append(log_txt)
+    logging.info(log_txt)
     print(log_txt)
     with pd.ExcelWriter(max_dest) as writer:
         df_max = max_summary.summarize(merged_sub_paths)
@@ -157,3 +163,4 @@ with open('log.txt', 'a') as file:
         file.write('\n')
 
 print('Done!')
+logging.info('Program terminated.')
