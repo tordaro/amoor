@@ -133,6 +133,7 @@ for folder in dest_dirs:
         df_max = max_summary.summarize(merged_sub_paths)
         df_max = max_summary.reorder_to_store_order(df_max)  # Reorder columns
         df_max.to_excel(writer, sheet_name='result')
+        df_describe = df_max.groupby('segment')[priorities].describe().round(1)
         for priority in priorities:    
             df_util = max_summary.prioritize_components(df_max, priority, 10)
             df_util.to_excel(writer, sheet_name=priority)
@@ -156,6 +157,7 @@ for folder in dest_dirs:
         df_sources = pd.DataFrame(merged_sub_paths,
                             columns=['source'],
                             index=range(1, len(merged_sub_paths)+1))
+        df_describe.to_excel(writer, sheet_name='describe')
         df_sources.to_excel(writer, sheet_name='sources')
 
 print('Done!')
