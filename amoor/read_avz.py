@@ -41,8 +41,8 @@ def _model(path, is_accident, is_nice=False, to_clipboard=False):
         return None
     
     xml_header = [
-    'load_limit', 'edit_id', 'materialcoeff',
-    'mbl', 'name', 'component', 'material', 'id'
+    'load_limit', 'edit_id', 'materialcoeff', 'mbl', 'name',
+    'component', 'material', 'id', 'is_accident'
     ]
     model = {header: [] for header in xml_header}
     for comp in root.iter('component'):
@@ -59,14 +59,18 @@ def _model(path, is_accident, is_nice=False, to_clipboard=False):
         model[xml_header[1]].append(int(comp.attrib['number'])) # edit_id
         if is_accident:
             model[xml_header[0]].append(mbl/(mcoeff/1.5))   # load_limit
+            model[xml_header[8]] = True                     # is_accident
         else:
             model[xml_header[0]].append(mbl/(mcoeff*1.15))  # load_limit
+            model[xml_header[8]] = False                    # is_accident 
     
     df_model = pd.DataFrame(data = model)
     df_model.set_index(xml_header[7], inplace=True)
     
     if is_nice:
-        df_model[[xml_header[5], 'segment']] = df_model[xml_header[5]].str.split('_', expand=True, n=1)
+        df_model[[xml_header[5], 'segment']] = (
+            df_model[xml_header[5]].str.split('_', expand=True, n=1)
+        )
         df_model.loc[:, 'segment'] = df_model['segment'].astype('category')
     
     return df_model

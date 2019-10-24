@@ -25,7 +25,7 @@ def reorder_to_store_order(result):
                    "mbl_shackle", "mbl_coupling", "edit_id",
                    "force_source", "right_web_source", "conv_norm_source",
                    "max_zload_source", "min_zload_source",
-                   "max_zload_lt", "min_zload_lt"]
+                   "max_zload_lt", "min_zload_lt", "is_accident"]
     allowed_cols = [col for col in desired_cols if col in result_mod.columns]
     return result_mod[allowed_cols]
 
@@ -68,7 +68,7 @@ def summarize(result_paths):
                     'conv_norm', 'utilization', 'mbl_bound',
                     'mbl_anchor', 'mbl_shackle', 'mbl_coupling',
                     'mbl', 'material', 'length', 'mass', 'materialcoeff',
-                    'component']
+                    'component', 'is_accident']
     # Reference columns
     source_columns = ['force_source', 'min_zload_source',
                      'max_zload_source', 'conv_norm_source',
@@ -114,7 +114,7 @@ def reorder_and_filter(df_result):
         'min_zload_lt','max_zload_lt',
         'conv_norm_lt', 'right_web_lt',
         'force_source', 'min_zload_source','max_zload_source',
-        'conv_norm_source', 'right_web_source'
+        'conv_norm_source', 'right_web_source', "is_accident"
     ]
     allowed_headers = [name for name in desired_order if name in df_result.columns]
     return df_result[allowed_headers]
