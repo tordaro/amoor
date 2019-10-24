@@ -5,6 +5,7 @@ Created on Wed May 23 08:28:46 2018
 @author: tordaronsen
 """
 import sys
+import re
 import pandas as pd
 from pathlib import Path
 from glob import glob
@@ -14,26 +15,43 @@ def reorder_to_store_order(result):
     Reorder result to match order in master excel file.
     '''
     result_mod = result.reset_index()
-    desired_cols = ["name", "index", "id", "force", "force_source", 
+    desired_cols = ["name", "id", "force", "force_lt", 
                    "component", "material", "segment", "mbl",
                    "materialcoeff", "max_zforce", "min_zforce",
-                   "right_web", "right_web_source", "conv_norm",
-                   "conv_norm_index", "load", "load_limit",
+                   "right_web", "right_web_lt", "conv_norm",
+                   "conv_norm_lt","load", "load_limit",
                    "utilization", "max_zload", "min_zload",
                    "mass", "length", "mbl_bound", "mbl_anchor",
                    "mbl_shackle", "mbl_coupling", "edit_id",
-                   "max_zload_index", "min_zload_index",
-                   "conv_norm_index","min_zload_source",
-                   "max_zload_source","conv_norm_source"]
+                   "force_source", "right_web_source", "conv_norm_source",
+                   "max_zload_source", "min_zload_source",
+                   "max_zload_lt", "min_zload_lt"]
     allowed_cols = [col for col in desired_cols if col in result_mod.columns]
     return result_mod[allowed_cols]
 
 
 def _load_results(result_paths):
     'Loads and reference results in a dict.'
-    results = {Path().joinpath(*path.parts[1:]): pd.read_csv(path, index_col="id") 
+    results = {Path().joinpath(*path.parts[1:]):
+                pd.read_csv(path, index_col="id") 
                 for path in result_paths}
     return results
+
+
+def add_lt_columns(df_result):
+    '''Reads all source columns in df_result, and returns new DF with
+    corresponding LT columns added.'''
+    df = df_result.copy()
+    header_pat = re.compile(r'(\w+)_source')
+    entry_pat = re.compile(r'(\d{1,3})merged.csv')
+    source_cols = [col for col in df_result.columns if 'source' in col]
+    for source_col in source_cols:
+        lt_col = header_pat.search(source_col)[1] + "_lt"
+        df[lt_col] = df[source_col].apply(
+            # entry is Path object without casting
+            lambda entry: int(entry_pat.search(str(entry))[1])
+        )
+    return df
 
 
 def summarize(result_paths):
@@ -78,6 +96,7 @@ def summarize(result_paths):
         df_final.loc[is_more_utilized, 'right_web_source'] = ref
         df_final.loc[is_bigger_zmin, 'min_zload_source'] = ref
         df_final.loc[is_bigger_zmax, 'max_zload_source'] = ref
+    df_final = add_lt_columns(df_final)
     return df_final
 
 
@@ -85,13 +104,15 @@ def reorder_and_filter(df_result):
     '''Reorder the columns and exclude
     uninteresting ones.'''
     desired_order = [
-        'component', 'segment', 'material',
+        'force_lt', 'component', 'segment', 'material',
         'materialcoeff', 'length', 'mass',
         'mbl', 'mbl_bound', 'load', 'load_limit',
         'utilization', 'min_zload', 'max_zload',
         'right_web', 'conv_norm', 'force_index', 
         'max_zload_index', 'min_zload_index',
         'right_web_index', 'conv_norm_index',
+        'min_zload_lt','max_zload_lt',
+        'conv_norm_lt', 'right_web_lt',
         'force_source', 'min_zload_source','max_zload_source',
         'conv_norm_source', 'right_web_source'
     ]
