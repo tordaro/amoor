@@ -28,7 +28,7 @@ def speak_vals(df, target, name, unit):
     """
     corr_vals = corresponding_vals(df, target)
     df_corr_vals = pd.DataFrame(corr_vals)
-    txt_lines = [name.upper() + ":\n"]
+    txt_lines = [f"{name.upper():-^78}" + ":\n"]
     for segment, vals in corr_vals.items():
         txt_lines.append(
             f"Største {name} i {segment.lower()} oppstår i " +
