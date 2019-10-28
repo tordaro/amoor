@@ -1,10 +1,19 @@
+"""Environment summary printer
+Takes *.xlsx file with formatted environment and stores summary text
+to file where "xlsx" is replaced with "txt. Useful for reports.
+"""
+
 import sys
 import pandas as pd
 from util import *
 
 
 def get_corr_vals(df, target, corr_vals):
-    
+    """
+    Takes environment df along with corr_vals dictionary, that is filled with
+    max values of target, and corresponding directions. Nothing is returned
+    but corr_vals is filled inplace.
+    """ 
     corr_vals[target] = {}
     max_val = df[target].max()
     idx = (df[target] == max_val)
@@ -21,6 +30,10 @@ def get_corr_vals(df, target, corr_vals):
 
 
 def collect_corr_vals(df):
+    """
+    Takes environment df and returns a dictionary with max value of targets,
+    hard coded below, and corresponding directions.
+    """
     corr_vals = {}
     targets = ("vind", "hs", "strom5", "strom15")
     for target in targets:
@@ -29,6 +42,10 @@ def collect_corr_vals(df):
 
 
 def speak_vals(df):
+    """
+    Wraps all the key values in natural language and returnes a suitable
+    string that can be stored to file.
+    """
     corr_vals = collect_corr_vals(df)
     summary_txt = (
         f"Største vindhastighet er {corr_vals['vind']['max_val']} m/s " +
