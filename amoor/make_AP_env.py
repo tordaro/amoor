@@ -91,7 +91,7 @@ def make_env_AP(path, decimal=b',', sep='\t', col_names=None):
     return env_final
 
 if __name__ == '__main__':
-	lr_csv_path = sys.argv[1]
-	load_conditions = make_env_AP(lr_csv_path)
+    lr_csv_path = sys.argv[1]
+    load_conditions = make_env_AP(lr_csv_path)
     print(load_conditions)
-	load_conditions.to_excel("miljo.xlsx")
+    load_conditions.to_excel("miljo.xlsx")
