@@ -54,7 +54,9 @@ def main():
         ("load", "last", "tonn"),
         ("mbl_bound", "MBL-krav", "tonn"),
         ("min_zload", "vertikalkraft", "tonn"),
-        ("max_zload", "vertikalkraft", "tonn")
+        ("max_zload", "vertikalkraft", "tonn"),
+        ("mbl_coupling", "MBL-krav til koblingspunkt", "tonn"),
+        ("mbl_anchor", "MBL-krav til bunnfeste", "tonn")
     )
     for result_path in result_paths:
         df_result = pd.read_excel(result_path)
