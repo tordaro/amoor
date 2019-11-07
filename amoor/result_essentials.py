@@ -59,6 +59,9 @@ def main():
         ("mbl_anchor", "MBL-krav til bunnfeste", "tonn")
     )
     for result_path in result_paths:
+        if "~" in str(result_path):
+            print(f"Ignored file: {str(result_path)}.")
+            continue
         df_result = pd.read_excel(result_path)
         txt_lines = []
         for arg in args:
