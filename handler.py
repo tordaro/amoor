@@ -50,6 +50,7 @@ def summary_is_updated(summary_path, sub_paths):
 SOURCE_ROOT = Path('../Resultater')
 DEST_ROOT = Path('Output')
 MATERIAL_LIB_PATH = Path('amoor/all_materials.csv')
+MOD_FILE = 'modify.xlsx'
 is_nice = True
 material_lib = pd.read_csv(MATERIAL_LIB_PATH, index_col='Forkortelse')
 
@@ -66,6 +67,7 @@ dest_dirs = [path_replace(folder, SOURCE_ROOT, DEST_ROOT)
             for folder in SOURCE_ROOT.glob('**/')
             if str(folder) != str(SOURCE_ROOT)
             if 'max_' not in str(folder)]
+mod_sources = SOURCE_ROOT.glob('**/' + MOD_FILE)
 DEST_ROOT.mkdir(exist_ok=True)
 for folder in dest_dirs:
     folder.mkdir(exist_ok=True)
@@ -113,6 +115,29 @@ for pfat, key in zip(pfat_dest, key_dest):
     print(log_txt)
     df = merge.merge(pfat_str, key)
     df.to_csv(merged)
+
+# Modify merged files
+if mod_sources:
+    for mod_path in mod_sources:
+        mod_df = pd.read_excel(mod_path)
+        mod_df.set_index('id', inplace=True)
+        dest_path = path_replace(mod_path, SOURCE_ROOT, DEST_ROOT)
+        dest_path = path_replace(dest_path, MOD_FILE, '')
+        merged_paths = dest_path.glob('**/*merged.csv')
+        for merged_path in merged_paths:
+            # if file_is_younger(merged_path, mod_path):
+                # continue
+            print("Modifying {}...".format(merged_path))
+            merged_df = pd.read_csv(merged_path)
+            merged_df.to_csv(
+                path_replace(merged_path, 'merged', 'merged_premod')
+            )
+            merged_df.set_index('id', inplace=True)
+            merged_df = merged_df.loc[mod_df.index]
+            merged_df['segment'] = mod_df['segment']
+            merged_df['component'] = mod_df['component']
+            merged_df['material'] = mod_df['material']
+            merged_df.to_csv(merged_path)
 
 # Make max files
 priorities = ['utilization', 'load', 'mbl_bound',
