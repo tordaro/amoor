@@ -66,7 +66,8 @@ merged_dest = [path_replace(pfat_csv, 'PFAT', 'merged')
 dest_dirs = [path_replace(folder, SOURCE_ROOT, DEST_ROOT)
             for folder in SOURCE_ROOT.glob('**/')
             if str(folder) != str(SOURCE_ROOT)
-            if 'max_' not in str(folder)]
+            if 'max_' not in str(folder)
+            if list(folder.glob('*'))]  # Ignore empty folders
 mod_sources = SOURCE_ROOT.glob('**/' + MOD_FILE)
 DEST_ROOT.mkdir(exist_ok=True)
 for folder in dest_dirs:
