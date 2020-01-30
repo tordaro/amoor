@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<model version="2.5" description="This xml file used for Aquabase system" name="New Model" created="16:01:31 19-03-2018" saved="09:43:40 01-11-2019" author="Tord Aronsen" lastVersion="2.14.1">
+  <Nodes>
+  </Nodes>
+  <nonlineardata />
+  <Components>
+  </Components>
+  <metadata />
+  <WaterSurface discretisation="1" minX="-1" minY="-1" maxX="1" maxY="1" />
+  <Environment seed="0" DynamicParameters="1" NewMark="0.5" dummy="4.0" />
+  <EnvironmentLoads />
+  <TimeSerie PreIncrement="5" MaxIterationsPerStep="1000" NumTotalStepWave="40" NumStepWaveOne="20" ConvergenceCriteria="1.0" iBottom="false" terrainAsBottom="false" zBottom="-100.0" epsBottom="1.0" FrictionCoeff="0.0" Wavereduction="true" ReportedSteps="1" depth="-1.0" slamming="false" convergence="0.0" currentReduction="3" watervolumecorrection="true" masstype="0" threads="1" pfatomitted="false" dynamictolerance="0.0">
+    <hydrodynamic waveheading="90" hullpoints="40" freesurface="24" />
+    <nonlineardensity active="false" />
+    <stresses accelerations="false" velocities="false" rotation="true" stresscomponent="true" convergence="true" globalforces="true" hingeforces="true" vonmises="true" netforces="true" localsection="true" slammingparameters="true" arrowheight="false" />
+  </TimeSerie>
+  <Environments />
+  <raotables />
+  <shapes />
+</model>
