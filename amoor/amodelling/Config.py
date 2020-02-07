@@ -9,8 +9,8 @@ class Config:
         self.frame_config = config["Ramme"]
         self.anchor_config = config["Anker"]
         # Encapsulate input values
-        self.num_rows = self.frame_config.iloc[0, 1]
-        self.num_cols = self.frame_config.iloc[1, 1]
+        self.num_rows = int(self.frame_config.iloc[0, 1])
+        self.num_cols = int(self.frame_config.iloc[1, 1])
         self.length_long = self.frame_config.iloc[2, 1]
         self.length_across = self.frame_config.iloc[3, 1]
         self.frame_depth = self.frame_config.iloc[4, 1]
