@@ -113,7 +113,7 @@ class Renderer:
 def main():
     config_path = sys.argv[1]
     model_path = sys.argv[2]
-    xml_template = "model_template.xml"
+    xml_template = "./amoor/amodelling/model_template.xml" # Quick fix
     config = Config(config_path)
     rendr = Renderer(config, xml_template)
     rendr.write(model_path)
