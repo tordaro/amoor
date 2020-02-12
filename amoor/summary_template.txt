@@ -15,3 +15,5 @@ Største MBL-krav er {mbl_bound_final_tau:2.1f} tonn i fortøyningsline {mbl_bou
 Mest utnyttede materiale er i {utilization_id}, med {utilization:2.1f} % utnyttelse.
 
 _ til line _ vurderes som mest utsatt for utmatting. Estimert levetid før utmattelse her er _ år.
+
+Egenperiodene til flåten i horisontalt plan utgjør ikke en fare for resonans.
