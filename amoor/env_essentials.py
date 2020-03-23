@@ -50,7 +50,7 @@ def speak_vals(df):
     summary_txt = (
         f"Største vindhastighet er {corr_vals['vind']['max_val']} m/s " +
         f"og kommer fra {corr_vals['vind']['sektor']}. Største " +
-        f"Bølge er {corr_vals['hs']['max_val']} m og kommer fra " +
+        f"bølge er {corr_vals['hs']['max_val']} m og kommer fra " +
         f"{corr_vals['hs']['sektor']}. Største " +
         f"strømhastighet på 5 m dyp er {corr_vals['strom5']['max_val']} m/s " +
         f"og kommer fra {corr_vals['strom5']['strom5retn']}. Største " +
