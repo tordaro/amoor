@@ -74,7 +74,8 @@ class Config:
                 self.node_id += 1
             # Set edges
             for i, category in enumerate(categories):
-                self.edges[str(anchor_num)+category]= {
+                # .split()-hack to avoid annoying floating points
+                self.edges[str(anchor_num).split(".")[0]+category]= {
                     "edge": (node_names[i], node_names[i+1]),
                     "edge_id": self.edge_id + i * len(self.anchor_config)
                 }
